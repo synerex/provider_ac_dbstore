@@ -74,7 +74,7 @@ func init() {
 	}
 
 	// create table
-	_, err = db.Exec(ctx, `create table if not exists ac(id BIGSERIAL NOT NULL, time TIMESTAMP not null, aid INT not null, count INT not null, primary key(id))`)
+	_, err = db.Exec(ctx, `create table if not exists ac(id BIGSERIAL NOT NULL, time TIMESTAMP not null, aid INT not null, count INT not null, primary key(id), constraint ac_pk unique (time, aid))`)
 	if err != nil {
 		print("create table error: ")
 		log.Println(err)
